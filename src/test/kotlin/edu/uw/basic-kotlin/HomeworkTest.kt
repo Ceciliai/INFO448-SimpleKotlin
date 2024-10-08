@@ -35,6 +35,19 @@ class HomeworkTest {
             assertEquals(whenFn(k), v)
         }
     }
+    //For extra credit, this is the first test I added
+    //Add handling of unknown strings to ensure correct default values are returned:
+    @Test fun when_unknownString() {
+    assertEquals(whenFn("Unknown"), "I don't understand")
+    }
+
+    //For extra credit, this is the second test I added
+    //Add tests for negative integers to ensure they are recognized as numbers:
+    @Test fun when_negativeInt() {
+    assertEquals(whenFn(-5), "a number")
+    }
+
+
 
     // =================
     // add/sub/mathOp tests
@@ -50,6 +63,14 @@ class HomeworkTest {
         }
     }
 
+    //For extra credit, this is the third test I added
+    //add tests for maximum values to ensure that the ADD function 
+    //behaves correctly when dealing with extreme values:
+    @Test fun addition_extremeValues() {
+    assertEquals(add(Int.MAX_VALUE, 0), Int.MAX_VALUE)
+    }
+
+
     @Test fun subtraction_tests() {
         val sub_tests = listOf(
             Pair(0, 0) to 0,
@@ -62,12 +83,27 @@ class HomeworkTest {
         }
     }
 
+    //For extra credit, this is the 4th test I added
+    //Also add tests for maxima and minima to ensure that the sub function handles boundary cases:
+    @Test fun subtraction_extremeValues() {
+    assertEquals(sub(Int.MAX_VALUE, 1), Int.MAX_VALUE - 1)
+    }
+
+
     @Test fun mathOp_tests() {
         assertEquals(4, mathOp(2, 2, { l,r -> l+r} ))
         assertEquals(4, mathOp(2, 2, ::add ))
         assertEquals(0, mathOp(2, 2, ::sub ))
         assertEquals(16, mathOp(4, 4, { l,r -> l*r} ))
     }
+
+    //For extra credit, this is the 5th test I added
+    //Add custom multiplications to ensure that mathOp handles different operators correctly:
+    @Test fun mathOp_customMultiplication() {
+    assertEquals(mathOp(3, 3, { a, b -> a * b }), 9)
+    }
+
+
 
     // =================
     // Person tests
@@ -77,6 +113,14 @@ class HomeworkTest {
         assertEquals(48, p1.age)
         assertEquals("[Person firstName:Ted lastName:Neward age:48]", p1.debugString)
     }
+
+    //For extra credit, this is the 6th test I added
+    //Test different instances of the Person class to verify that the debugString is generated correctly:
+    @Test fun person_variedTests() {
+    val p2 = Person("Alice", "Smith", 30)
+    assertEquals("[Person firstName:Alice lastName:Smith age:30]", p2.debugString)
+    }
+
 
     // =================
     // Money tests
